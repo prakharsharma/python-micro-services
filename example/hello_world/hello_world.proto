@@ -1,0 +1,14 @@
+package example;
+
+import "core/service.proto";
+
+message HelloRequest {
+    optional core.ServiceRequestHeader header = 1;
+    optional string name = 2;
+}
+
+message HelloResponse {
+    optional core.ServiceResponseHeader header = 1;
+    optional string message = 2;
+}
+

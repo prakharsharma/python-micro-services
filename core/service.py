@@ -22,14 +22,14 @@ import random
 import requests
 
 import zmq
-from service_message_handler import \
+from core.service_message_handler import \
     HeartbeatHandler, DescriptionHandler, StopServiceHandler, \
     DefaultMessageHandler, HealthCheckHandler
-from utils import redis_config_from_config_file, \
+from common.utils import redis_config_from_config_file, \
     zmq_socket_from_socket_type, set_time_zone, current_timestamp
-from redis_service_registry import \
+from core.redis_service_registry import \
     RedisServiceRegistry
-from error import StopServiceError
+from core.error import StopServiceError
 
 
 class Service(object):

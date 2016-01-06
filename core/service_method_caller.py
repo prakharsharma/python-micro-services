@@ -5,11 +5,11 @@ Module provides utility class to call a function on a service
 import Queue
 import uuid
 
-from resourcepool import ResourcePool
+from core.resourcepool import ResourcePool
 
-from client import ServiceClient, DEFAULT_TIME_OUT, \
+from core.client import ServiceClient, DEFAULT_TIME_OUT, \
     DEFAULT_MAX_TRIES, DEFAULT_SLEEP_BEFORE_RETRY
-from redis_service_registry import RedisServiceRegistry
+from core.redis_service_registry import RedisServiceRegistry
 
 
 RESOURCE_ACQUIRING_TIMEOUT = 2

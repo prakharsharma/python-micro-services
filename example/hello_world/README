@@ -1,0 +1,11 @@
+# Instructions
+
+- Download and install zermomq 4.0.0
+- Install pyzmq - Python bindings for zeromq
+- Download and install protobuf 2.6.0 (from github)
+- Install protobuf 2.6.0 Python bindings
+- export PYTHONPATH=$PUBLISHING_SERVER_DIR/src
+- cd $PUBLISHING_SERVER_DIR/src/services/hello_world
+- protoc --python_out=./ hello_world.proto
+- python hello_world_server.py -c hello_world.cfg
+- In another terminal, set PYTHONPATH as above and do python hello_world_client.py

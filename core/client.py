@@ -7,12 +7,12 @@ import threading
 import uuid
 import zmq
 
-from utils import zmq_socket_from_socket_type, \
+from common.utils import zmq_socket_from_socket_type, \
     current_timestamp
 
-from redis_service_registry import \
+from core.redis_service_registry import \
     RedisServiceRegistry
-from error import ServiceFunctionNotAvailableError
+from core.error import ServiceFunctionNotAvailableError
 
 
 DEFAULT_MAX_TRIES = 3

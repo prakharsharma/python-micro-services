@@ -10,9 +10,9 @@ import json
 import psutil
 import os
 
-from publishing.common.utils import current_timestamp
+from common.utils import current_timestamp
 
-from publishing.services.base.error import StopServiceError, \
+from core.error import StopServiceError, \
     BadServiceRequestError, BadServiceMessageHandlerError
 
 

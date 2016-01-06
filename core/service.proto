@@ -1,4 +1,4 @@
-package publishing.services.base;
+package core;
 
 message ServiceRequestHeader {
 
