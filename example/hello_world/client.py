@@ -2,7 +2,7 @@
 client for hello world service
 """
 
-import hello_world_pb2
+from example.hello_world.hello_world_pb2 import *
 import argparse
 
 from core.client import \
