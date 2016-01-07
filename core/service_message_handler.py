@@ -77,13 +77,10 @@ class ServiceMessageHandler(object):
             else:
                 self._validate_request(request)
                 self.log('info', '%s of %s service got request guid %s, '
-                                 'from client: %s for '
-                                 'user_id: %s, email: %s' %
+                                 'from client: %s' %
                          (self.__class__.__name__, self._service.name,
                          request.header.request_guid,
-                         request.header.client,
-                         request.header.user.base_model.id,
-                         request.header.user.email))
+                         request.header.client))
                 self._handle(request, response)
                 response.header.success = True
                 self.log('debug', 'successfully processed request guid: %s, '

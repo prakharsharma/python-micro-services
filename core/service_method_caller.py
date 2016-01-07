@@ -139,12 +139,9 @@ class ServiceMethodCaller(object):
                 self.log('debug', 'using client: %r' % client)
                 if hasattr(request, 'SerializeToString'):
                     request.header.request_guid = str(uuid.uuid4())
-                    self.log('info', 'calling %s method on %s service for '
-                                     'user_id: %s, email: %s, request guid: '
-                                     '%s' %
+                    self.log('info', 'calling %s method on %s service '
+                                     'with request guid: %s' %
                              (method, service,
-                              request.header.user.base_model.id,
-                              request.header.user.email,
                               request.header.request_guid))
                     request_message = request.SerializeToString()
                 else:
@@ -153,13 +150,16 @@ class ServiceMethodCaller(object):
                                           response_class=response_class,
                                           timeout=timeout, max_tries=max_tries,
                                           sleep_before_retry=sleep_before_retry)
-                response_type = 'good' if response.header.success else 'bad'
-                self.log('info', 'received %s response for %s method from %s '
-                                 'service for request guid: %s in %s '
-                                 'microseconds' %
-                         (response_type, method, service,
-                          response.header.request_guid,
-                          response.header.response_time))
+                if hasattr(request, 'SerializeToString'):
+                    response_type = 'good' if response.header.success else 'bad'
+                    self.log('info', 'received %s response for %s method from %s '
+                                     'service for request guid: %s in %s '
+                                     'microseconds' %
+                             (response_type, method, service,
+                              response.header.request_guid,
+                              response.header.response_time))
+                else:
+                    self.log('info', 'received response: %s' % response)
                 return response
         except Queue.Empty:
             self.log('error', 'no client to call method: %s on service: %s '
